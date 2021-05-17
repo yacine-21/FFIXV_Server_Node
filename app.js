@@ -25,8 +25,6 @@ const notFound = require("./MIDDLEWARES/errorHandler");
 
 // ROUTES GET
 
-// app.use("/", Home);
-
 app.use("/", RoutesGet)
 
 app.get(notFound);

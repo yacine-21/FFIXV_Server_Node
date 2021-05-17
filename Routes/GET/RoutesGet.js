@@ -22,7 +22,7 @@ Router.get("/api/one", (req, res, next) => {
 
 Router.post("/api/SearchCaracterName", (req, res, next) => {
 
-  const name = JSON.parse(JSON.stringify(req.body.name));
+  const name = (req.body.name);
   console.log("Le nom du joueur que tu recherche est : " + name);
 
     const options = {

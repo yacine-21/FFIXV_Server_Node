@@ -31,7 +31,7 @@ Router.post("/api/SearchCaracterName", (req, res, next) => {
     params: {name: name},
     headers: {
       cookie: '__cfduid=dcc93a08131647be8265fa420161cd40a1619759691','Access-Control-Allow-Origin': '*',
-      mode: 'cors',
+      mode: 'no-cors',
     },
     };
 
@@ -56,7 +56,7 @@ Router.post("/api/SearchCaracterByID", (req, res, next) => {
     url: `https://xivapi.com/character/${ID}`,
     headers: {
       cookie: '__cfduid=dcc93a08131647be8265fa420161cd40a1619759691','Access-Control-Allow-Origin': '*',
-      mode: 'cors',
+      mode: 'no-cors',
     },
     };
 

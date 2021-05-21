@@ -29,7 +29,7 @@ Router.post("/api/SearchCaracterName", (req, res, next) => {
     method: 'POST',
     url: 'https://xivapi.com/character/search',
     params: {name: name},
-    headers: {cookie: '__cfduid=dcc93a08131647be8265fa420161cd40a1619759691'}
+    headers: {cookie: '__cfduid=dcc93a08131647be8265fa420161cd40a1619759691','Access-Control-Allow-Origin': '*'},
     };
 
 

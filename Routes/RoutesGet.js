@@ -53,7 +53,7 @@ Router.post("/api/SearchCaracterByID", (req, res) => {
       res.send(information);
     })
     .catch((error) => {
-      console.error(error);
+      console.log(error);
     });
 });
 
@@ -89,7 +89,10 @@ Router.post("/api/getDeepDungeon/thePalaceOfTheDead", (req, res) => {
 
   axios
     .request(options)
-    .then((response) => {})
+    .then((response) => {
+      const information = response.data;
+      res.send(information);
+    })
     .catch((error) => {
       console.error(error);
     });
@@ -108,7 +111,6 @@ Router.post("/api/getDeepDungeon/HeavenOnHight", (req, res) => {
     console.log(req.body);
     const information = response.data;
     res.send(information);
-    console.error(error);
   });
 });
 
@@ -164,9 +166,6 @@ Router.post("/api/login", async (req, res) => {
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
 
   res.header("Auth-token", token).json({ token: token });
-
-  console.log(req.body.email);
-  console.log(req.body.password);
 });
 
 Router.get("/api/posts", verifyToken, (req, res) => {

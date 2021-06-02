@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
-
 // IMPORT MIDDLEWARES
 
 const RoutesGet = require("./Routes/RoutesGet");

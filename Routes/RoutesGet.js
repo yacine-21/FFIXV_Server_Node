@@ -97,11 +97,26 @@ Router.post("/api/getDeepDungeon/thePalaceOfTheDead", (req, res) => {
       console.error(error);
     });
 });
-
 Router.post("/api/getDeepDungeon/HeavenOnHight", (req, res) => {
   const options = {
     method: "POST",
     url: `https://xivapi.com/DeepDungeonDanger`,
+    headers: {
+      cookie: "__cfduid=dcc93a08131647be8265fa420161cd40a1619759691",
+    },
+  };
+
+  axios.request(options).then((response) => {
+    console.log(req.body);
+    const information = response.data;
+    res.send(information);
+  });
+});
+
+Router.post("/api/getAllPommander", (req, res) => {
+  const options = {
+    method: "POST",
+    url: `https://xivapi.com/DeepDungeonItem`,
     headers: {
       cookie: "__cfduid=dcc93a08131647be8265fa420161cd40a1619759691",
     },
@@ -122,7 +137,10 @@ Router.post("/api/register", async (req, res) => {
 
   // WE CHECK IF THE EMAIL EXISTS
   const emailExist = await User.findOne({ email: req.body.email });
-  if (emailExist) return res.status(400).send("Email is not found");
+  if (emailExist) {
+    const message = { message: "Email already exist" };
+    return res.status(400).json(message);
+  }
 
   // LETS HASH THE PASSWORD
   const salt = await bcrypt.genSalt(10);
@@ -137,14 +155,11 @@ Router.post("/api/register", async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.status(200).send("USER WELL CREATED");
+    const message = { message: "USER WELL CREATED" };
+    return res.status(200).json(message);
   } catch (error) {
     res.status(400).send(error);
   }
-
-  console.log(req.body.email);
-  console.log(req.body.password);
-  console.log(req.body.name);
 });
 
 Router.post("/api/login", async (req, res) => {
